@@ -1,8 +1,35 @@
+const cardFromUrlCapability = (t, options) => {
+  const url = options.url;
+
+  if (url.startsWith("https://www.funda.nl")) {
+    console.log("fetching funda.nl")
+
+    return fetch(apiUrl, { method: 'GET' })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        console.log("fetched html from funda");
+        return {
+         name: "Funda kaartje",
+         desc: "This card was created from the URL for funda.nl",
+         pos: "top"
+       };
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+        return t.alert({ message: 'Failed to fetch data.', display: 'error', duration: 5 });
+      });
+
+  }
+
+  // Return null if no custom card content is provided
+  return null;
+};
+
 TrelloPowerUp.initialize({
-  'card-buttons': function(t, options){
-    return [{
-      icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
-      text: 'Estimate Size',
-    }];
-  },
+  'card-from-url': cardFromUrlCapability
 });
