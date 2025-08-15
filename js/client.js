@@ -6,26 +6,11 @@ const cardFromUrlCapability = (t, options) => {
   if (url.startsWith("https://www.funda.nl")) {
     console.log("fetching funda.nl");
 
-    return fetch(apiUrl, { method: 'GET' })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(data => {
-        console.log("fetched html from funda");
-        return {
-         name: "Funda kaartje",
-         desc: "This card was created from the URL for funda.nl",
-         pos: "top"
-       };
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-        return t.alert({ message: 'Failed to fetch data.', display: 'error', duration: 5 });
-      });
-
+    return {
+        name: "Funda kaartje",
+        desc: "This card was created from the URL for funda.nl",
+        pos: "top"
+      };
   }
 
   // Return null if no custom card content is provided
