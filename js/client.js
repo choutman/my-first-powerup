@@ -1,8 +1,10 @@
 const cardFromUrlCapability = (t, options) => {
   const url = options.url;
 
+  console.log("Checking url", url);
+
   if (url.startsWith("https://www.funda.nl")) {
-    console.log("fetching funda.nl")
+    console.log("fetching funda.nl");
 
     return fetch(apiUrl, { method: 'GET' })
       .then(response => {
