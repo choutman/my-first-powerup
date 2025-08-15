@@ -14,7 +14,7 @@ const cardFromUrlCapability = (t, options) => {
         return response.text();
       })
       .then(data => {
-        console.log("fetched html from funda");
+        console.log("fetched html from funda", data);
         return {
          name: "Funda kaartje",
          desc: "This card was created from the URL for funda.nl",
