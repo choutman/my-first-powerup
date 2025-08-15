@@ -6,7 +6,7 @@ const cardFromUrlCapability = (t, options) => {
   if (url.startsWith("https://www.funda.nl")) {
     console.log("fetching funda.nl");
 
-    return fetch(apiUrl, { method: 'GET' })
+    return fetch(url, { method: 'GET' })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
